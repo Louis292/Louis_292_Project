@@ -1,0 +1,32 @@
+# Fichier de configuration du plugin Louis_292_Porject, se plugin est destiné au public
+# dans se plugin j'assemble toute mes connaisssances
+
+# Version du plugin
+version: "1.0"
+
+# Mode debug
+debug: false
+
+# utiliser les bases de donnés
+DataBase: false
+
+# DbCredentials
+DataBase_Tools:
+
+# Driver utilisé
+  driver: "com.mysql.jdbc.Driver"
+
+# utilisateur
+  user: "Utilisateur"
+
+# Mots de passe
+  pass: "Passw0rd"
+
+# Nom de la base de donné
+  DataBase_Name: "MyDB"
+
+# port de la base de donné
+  port: 3306
+
+# db ip
+  ip: "localhost"

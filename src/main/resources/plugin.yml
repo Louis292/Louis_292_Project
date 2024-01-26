@@ -1,0 +1,22 @@
+name: Louis_292_Project
+version: '${project.version}'
+main: fr.louis.louis_292_project.Louis_292_Project
+commands:
+  addmoney:
+    permission: monay.addmonay.use
+  baltop:
+    permission: monay.baltop.use
+  money:
+    permission: monay.monay.use
+  delhome:
+    permission: home.delhome.use
+  home:
+    permission: home.home.use
+  sethome:
+    permission: home.sethome.use
+  Rtp:
+    permission: teleporte.use
+  CustomItem:
+    permission: custom.give
+  zombie:
+    permission: zombie.spawn
