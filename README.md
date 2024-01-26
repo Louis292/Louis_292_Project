@@ -13,4 +13,4 @@ Ce plugin contient ces fonctionnalités :
 - Home
 - Configuration du plugin
 
-  Par Louis_292
+Par Louis_292
