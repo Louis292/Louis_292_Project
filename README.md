@@ -1,13 +1,14 @@
-# Se Plugin présente toutes mes capacité de spigot 1.8.8.
-j'ai crée se plugin pour une utilité de démonstration de posibilité, de plugin pour prendre des exemples de fonctionnalisé.
+#Ce plugin présente toutes mes capacités sur Spigot 1.8.8.
+J'ai créé ce plugin à des fins de démonstration des possibilités d'un plugin, afin de fournir des exemples de fonctionnalités.
 
-Se plugin contient ces fonctionnalités :
+Ce plugin contient ces fonctionnalités :
+
 - Listeners
 - Commandes
-- Tache répété
-- Random
-- MySql
-- Entité Manager
-- Random Téléportation
+- Tâches répétées
+- Aléatoire
+- MySQL DataBase
+- Gestionnaire d'entités
+- Téléportation aléatoire
 - Home
-- configuration Plugin
+- Configuration du plugin
