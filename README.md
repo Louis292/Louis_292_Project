@@ -12,3 +12,5 @@ Ce plugin contient ces fonctionnalités :
 - Téléportation aléatoire
 - Home
 - Configuration du plugin
+
+  Par Louis_292
