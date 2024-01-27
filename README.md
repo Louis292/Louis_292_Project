@@ -3,14 +3,14 @@ J'ai créé ce plugin à des fins de démonstration des possibilités d'un plugi
 
 Ce plugin contient ces fonctionnalités :
 
-- Listeners
+- Événement 
 - Commandes
 - Tâches répétées
-- Aléatoire
-- MySQL DataBase
+- Changement de laine de mouton aléatoirement 
+- Économie MySQL DataBase
 - Gestionnaire d'entités
 - Téléportation aléatoire
-- Home
+- Home via fichier YML 
 - Configuration du plugin
 
 Par Louis_292
