@@ -44,6 +44,7 @@ public class Louis_292_ProjectCommand implements CommandExecutor {
             player.sendMessage(ChatColor.GREEN + "| - Home Plugin");
             player.sendMessage(ChatColor.GREEN + "| - Tâche Répété");
             player.sendMessage(ChatColor.GREEN + "| - Random Téléportation commandes");
+            player.sendMessage(ChatColor.GREEN + "| - Example CustomItem Commandes");
             player.sendMessage(ChatColor.GREEN + "===============================================================");
         }
 
