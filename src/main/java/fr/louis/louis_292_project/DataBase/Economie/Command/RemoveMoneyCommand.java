@@ -10,11 +10,12 @@ import org.bukkit.entity.Player;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
-public class AddMonayCommand implements CommandExecutor {
+public class RemoveMoneyCommand implements CommandExecutor {
     private final DataBaseManager dataBaseManager;
 
-    public AddMonayCommand(DataBaseManager dataBaseManager) {
+    public RemoveMoneyCommand(DataBaseManager dataBaseManager) {
         this.dataBaseManager = dataBaseManager;
     }
 
@@ -26,7 +27,7 @@ public class AddMonayCommand implements CommandExecutor {
         }
 
         if (args.length != 2) {
-            sender.sendMessage(ChatColor.RED + "Utilisation incorrecte. Utilisation : /addmoney <joueur> <montant>");
+            sender.sendMessage(ChatColor.RED + "Utilisation incorrecte. Utilisation : /removemoney <joueur> <montant>");
             return true;
         }
 
@@ -47,19 +48,24 @@ public class AddMonayCommand implements CommandExecutor {
             return true;
         }
 
-        // Ajouter le montant à la base de données avec mise à jour de last_update
+        // Enlever le montant de la base de données
         try (Connection connection = dataBaseManager.getConnection();
-             PreparedStatement statement = connection.prepareStatement("UPDATE player_data_money SET money = money + ?, last_update = NOW() WHERE uuid = ?")) {
+             PreparedStatement statement = connection.prepareStatement("UPDATE player_data_money SET money = money - ?, last_update = ? WHERE player_name = ?")) {
             statement.setDouble(1, amount);
-            statement.setString(2, target.getUniqueId().toString());
-            statement.executeUpdate();
+            statement.setTimestamp(2, new Timestamp(System.currentTimeMillis()));
+            statement.setString(3, playerName);
+
+            int rowsAffected = statement.executeUpdate();
+
+            if (rowsAffected > 0) {
+                sender.sendMessage(ChatColor.GREEN + "Vous avez retiré " + amount + " d'argent à " + playerName + ".");
+            } else {
+                sender.sendMessage(ChatColor.RED + "Le joueur spécifié n'a pas suffisamment d'argent.");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
-            sender.sendMessage(ChatColor.RED + "Une erreur s'est produite lors de l'ajout d'argent à la base de données.");
-            return true;
+            sender.sendMessage(ChatColor.RED + "Une erreur s'est produite lors de la suppression d'argent dans la base de données.");
         }
-
-        sender.sendMessage(ChatColor.GREEN + "Vous avez ajouté " + amount + " d'argent à " + playerName + "'s compte.");
 
         return true;
     }

@@ -1,4 +1,5 @@
 C:\Users\planq\IdeaProjects\Louis_292_Project\src\main\java\fr\louis\louis_292_project\Command\Home\HomeCommand.java
+C:\Users\planq\IdeaProjects\Louis_292_Project\src\main\java\fr\louis\louis_292_project\DataBase\Economie\Command\RemoveMoneyCommand.java
 C:\Users\planq\IdeaProjects\Louis_292_Project\src\main\java\fr\louis\louis_292_project\listeners\PlayerInteractListener.java
 C:\Users\planq\IdeaProjects\Louis_292_Project\src\main\java\fr\louis\louis_292_project\Command\ZombieSpawningCommand.java
 C:\Users\planq\IdeaProjects\Louis_292_Project\src\main\java\fr\louis\louis_292_project\Command\Home\DelHomeCommand.java
@@ -12,6 +13,7 @@ C:\Users\planq\IdeaProjects\Louis_292_Project\src\main\java\fr\louis\louis_292_p
 C:\Users\planq\IdeaProjects\Louis_292_Project\src\main\java\fr\louis\louis_292_project\DataBase\Economie\DbCredentials.java
 C:\Users\planq\IdeaProjects\Louis_292_Project\src\main\java\fr\louis\louis_292_project\Command\Home\SetHomeCommand.java
 C:\Users\planq\IdeaProjects\Louis_292_Project\src\main\java\fr\louis\louis_292_project\DataBase\DataBaseManager.java
+C:\Users\planq\IdeaProjects\Louis_292_Project\src\main\java\fr\louis\louis_292_project\DataBase\Economie\Command\PayMoneyCommand.java
 C:\Users\planq\IdeaProjects\Louis_292_Project\src\main\java\fr\louis\louis_292_project\Command\ItemCustomCommand.java
 C:\Users\planq\IdeaProjects\Louis_292_Project\src\main\java\fr\louis\louis_292_project\DataBase\Economie\Command\BaltopCommand.java
 C:\Users\planq\IdeaProjects\Louis_292_Project\src\main\java\fr\louis\louis_292_project\DataBase\Economie\Listeners\OnPlayerJoinEconomie.java

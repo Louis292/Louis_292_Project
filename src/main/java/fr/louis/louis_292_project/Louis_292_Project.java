@@ -4,12 +4,11 @@ import fr.louis.louis_292_project.Command.Home.DelHomeCommand;
 import fr.louis.louis_292_project.Command.Home.HomeCommand;
 import fr.louis.louis_292_project.Command.Home.SetHomeCommand;
 import fr.louis.louis_292_project.Command.ItemCustomCommand;
+import fr.louis.louis_292_project.Command.Louis_292_ProjectCommand;
 import fr.louis.louis_292_project.Command.TeleporteCommand;
 import fr.louis.louis_292_project.Command.ZombieSpawningCommand;
 import fr.louis.louis_292_project.DataBase.DataBaseManager;
-import fr.louis.louis_292_project.DataBase.Economie.Command.AddMonayCommand;
-import fr.louis.louis_292_project.DataBase.Economie.Command.BaltopCommand;
-import fr.louis.louis_292_project.DataBase.Economie.Command.MoneyCommand;
+import fr.louis.louis_292_project.DataBase.Economie.Command.*;
 import fr.louis.louis_292_project.DataBase.Economie.Listeners.OnPlayerJoinEconomie;
 import fr.louis.louis_292_project.Schedulers.MessageManager;
 import fr.louis.louis_292_project.listeners.PlayerInteractListener;
@@ -41,6 +40,8 @@ public final class Louis_292_Project extends JavaPlugin {
             getCommand("money").setExecutor(new MoneyCommand(dataBaseManager));
             getCommand("baltop").setExecutor(new BaltopCommand(dataBaseManager));
             getCommand("addmoney").setExecutor(new AddMonayCommand(dataBaseManager));
+            getCommand("removemoney").setExecutor(new RemoveMoneyCommand(dataBaseManager));
+            getCommand("pay").setExecutor(new PayMoneyCommand(dataBaseManager));
         }
 
         Bukkit.getPluginManager().registerEvents(new SheepListener(), this);
@@ -64,6 +65,8 @@ public final class Louis_292_Project extends JavaPlugin {
         getCommand("CustomItem").setExecutor(new ItemCustomCommand());
 
         getCommand("zombie").setExecutor(new ZombieSpawningCommand());
+
+        getCommand("Louis_292_Project").setExecutor(new Louis_292_ProjectCommand(config));
 
     }
 

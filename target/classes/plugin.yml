@@ -2,12 +2,18 @@ name: Louis_292_Project
 version: '1.0'
 main: fr.louis.louis_292_project.Louis_292_Project
 commands:
+  Louis_292_Project:
+    permission: Louis_292_Project.use.*
+  removemoney:
+    permission: money.removemoney.use
+  pay:
+    permission: money.pay.use
   addmoney:
-    permission: monay.addmonay.use
+    permission: money.addmonay.use
   baltop:
-    permission: monay.baltop.use
+    permission: money.baltop.use
   money:
-    permission: monay.monay.use
+    permission: money.monay.use
   delhome:
     permission: home.delhome.use
   home:
