@@ -16,31 +16,31 @@ public class DataBaseManager {
 
     public DataBaseManager(FileConfiguration config) {
         this.config = config;
-        this.connect(); // Connect to databases during manager initialization.
+        this.connect(); // Connecter aux bases de données lors de l'initialisation du gestionnaire.
     }
 
     public void close() {
         if (economyConnection != null) {
-            economyConnection.close(); // Close economy database connection when closing the manager.
+            economyConnection.close(); // Fermer la connexion à la base de données économique lors de la fermeture du gestionnaire.
         }
 
         if (languageConnection != null) {
-            languageConnection.close(); // Close language database connection when closing the manager.
+            languageConnection.close(); // Fermer la connexion à la base de données de langue lors de la fermeture du gestionnaire.
         }
     }
 
-    // Get a connection to the economy database
+    // Obtenir une connexion à la base de données économique
     public Connection getEconomyConnection() throws SQLException {
-        // If the connection doesn't exist or is closed, reconnect.
+        // Si la connexion n'existe pas ou est fermée, reconnectez-vous.
         if (economyConnection == null || economyConnection.getConnection().isClosed()) {
             connect();
         }
         return economyConnection.getConnection();
     }
 
-    // Get a connection to the language database
+    // Obtenir une connexion à la base de données de langue
     public Connection getLanguageConnection() throws SQLException {
-        // If the connection doesn't exist or is closed, reconnect.
+        // Si la connexion n'existe pas ou est fermée, reconnectez-vous.
         if (languageConnection == null || languageConnection.getConnection().isClosed()) {
             connect();
         }
@@ -48,24 +48,30 @@ public class DataBaseManager {
     }
 
     private void connect() {
-        try {
-            // Check if economy connection is already established to avoid reconnection.
-            if (economyConnection == null || economyConnection.getConnection().isClosed()) {
-                // Create an EconomieDbCredentials object and provide it to the EconomieDbConnection constructor.
-                EconomieDbCredentials economyCredentials = new EconomieDbCredentials(config.getString("Economie_DataBase_Tools.ip"), config.getString("Economie_DataBase_Tools.user"), config.getString("Economie_DataBase_Tools.pass"), config.getString("Economie_DataBase_Tools.DataBase_Name"), config.getInt("Economie_DataBase_Tools.port"));
-                this.economyConnection = new EconomieDbConnection(economyCredentials, config);
-                System.out.println("Successfully connected to economy DB.");
-            }
+        // Vérifier si la connexion économique est déjà établie pour éviter une nouvelle connexion.
+        if (config.getBoolean("Economie_DataBase")) {
+            EconomieDbCredentials economyCredentials = new EconomieDbCredentials(
+                    config.getString("Economie_DataBase_Tools.ip"),
+                    config.getString("Economie_DataBase_Tools.user"),
+                    config.getString("Economie_DataBase_Tools.pass"),
+                    config.getString("Economie_DataBase_Tools.DataBase_Name"),
+                    config.getInt("Economie_DataBase_Tools.port")
+            );
+            this.economyConnection = new EconomieDbConnection(economyCredentials, config);
+            System.out.println("Successfully connected to economy DB.");
+        }
 
-            // Check if language connection is already established to avoid reconnection.
-            if (languageConnection == null || languageConnection.getConnection().isClosed()) {
-                // Create a LanguageDbCredentials object and provide it to the LanguageDbConnection constructor.
-                LanguageDbCredentials languageCredentials = new LanguageDbCredentials(config.getString("Langue_DataBase_Tools.ip"), config.getString("Langue_DataBase_Tools.user"), config.getString("Langue_DataBase_Tools.pass"), config.getString("Langue_DataBase_Tools.DataBase_Name"), config.getInt("Langue_DataBase_Tools.port"));
-                this.languageConnection = new LanguageDbConnection(languageCredentials, config);
-                System.out.println("Successfully connected to language DB.");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        // Vérifier si la connexion linguistique est déjà établie pour éviter une nouvelle connexion.
+        if (config.getBoolean("Langue_DataBase")) {
+            LanguageDbCredentials languageCredentials = new LanguageDbCredentials(
+                    config.getString("Language_DataBase_Tools.ip"),
+                    config.getString("Language_DataBase_Tools.user"),
+                    config.getString("Language_DataBase_Tools.pass"),
+                    config.getString("Language_DataBase_Tools.DataBase_Name"),
+                    config.getInt("Language_DataBase_Tools.port")
+            );
+            this.languageConnection = new LanguageDbConnection(languageCredentials, config);
+            System.out.println("Successfully connected to language DB.");
         }
     }
 }

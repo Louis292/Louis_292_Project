@@ -2,6 +2,8 @@ name: Louis_292_Project
 version: '${project.version}'
 main: fr.louis.louis_292_project.Louis_292_Project
 commands:
+  langue:
+    permission: langue.use
   Louis_292_Project:
     permission: Louis_292_Project.use.*
   removemoney:

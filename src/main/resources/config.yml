@@ -35,6 +35,7 @@ Economie_DataBase_Tools:
 Langue_DataBase: false
 
 Language_DataBase_Tools:
+
   # Driver utilisé
   driver: "com.mysql.jdbc.Driver"
 

@@ -10,6 +10,8 @@ import fr.louis.louis_292_project.Command.ZombieSpawningCommand;
 import fr.louis.louis_292_project.DataBase.DataBaseManager;
 import fr.louis.louis_292_project.DataBase.Economie.Command.*;
 import fr.louis.louis_292_project.DataBase.Economie.Listeners.OnPlayerJoinEconomie;
+import fr.louis.louis_292_project.DataBase.Langue.Command.LangueCommand;
+import fr.louis.louis_292_project.DataBase.Langue.Listeners.LangueGuiInteract;
 import fr.louis.louis_292_project.DataBase.Langue.Listeners.OnPlayerJoinLangue;
 import fr.louis.louis_292_project.Schedulers.MessageManager;
 import fr.louis.louis_292_project.listeners.PlayerInteractListener;
@@ -45,7 +47,9 @@ public final class Louis_292_Project extends JavaPlugin {
             getCommand("pay").setExecutor(new PayMoneyCommand(dataBaseManager));
         }
         if (config.getBoolean("Langue_DataBase")) {
-            Bukkit.getPluginManager().registerEvents(new OnPlayerJoinLangue(), this);
+            Bukkit.getPluginManager().registerEvents(new OnPlayerJoinLangue(dataBaseManager), this);
+            Bukkit.getPluginManager().registerEvents(new LangueGuiInteract(dataBaseManager), this);
+            getCommand("langue").setExecutor(new LangueCommand(dataBaseManager, config));
         }
 
         Bukkit.getPluginManager().registerEvents(new SheepListener(), this);
@@ -80,7 +84,7 @@ public final class Louis_292_Project extends JavaPlugin {
     }
 
     private void configMessage() {
-        StringBuilder message = new StringBuilder("==============================================================\n");
+        StringBuilder message = new StringBuilder("\n\n==============================================================\n");
         message.append("| \n");
         message.append("| Louis_292_Project enable V").append(config.getString("version")).append("\n");
         message.append("| \n");
@@ -88,16 +92,24 @@ public final class Louis_292_Project extends JavaPlugin {
         message.append("| \n");
         message.append("| DataBase ").append(config.getBoolean("DataBase")).append("\n");
 
-        if (config.getBoolean("DataBase")) {
+        if (config.getBoolean("Economie_DataBase")) {
             message.append("| \n");
-            message.append("| Driver : ").append(config.getString("DataBase_Tools.driver")).append("\n");
-            message.append("| User : ").append(config.getString("DataBase_Tools.user")).append("\n");
-            message.append("| pass : ").append(config.getString("DataBase_Tools.pass")).append("\n");
-            message.append("| Nom de la base de donné : ").append(config.getString("DataBase_Tools.DataBase_Name")).append("\n");
-            message.append("| Port : ").append(config.getInt("DataBase_Tools.port")).append("\n");
+            message.append("| Driver : ").append(config.getString("Economie_DataBase_Tools.driver")).append("\n");
+            message.append("| User : ").append(config.getString("Economie_DataBase_Tools.user")).append("\n");
+            message.append("| pass : ").append(config.getString("Economie_DataBase_Tools.pass")).append("\n");
+            message.append("| Nom de la base de donné : ").append(config.getString("Economie_DataBase_Tools.DataBase_Name")).append("\n");
+            message.append("| Port : ").append(config.getInt("Economie_DataBase_Tools.port")).append("\n");
+            if (config.getBoolean("Langue_DataBase")) {
+                message.append("| \n");
+                message.append("| Driver : ").append(config.getString("Language_DataBase_Tools.driver")).append("\n");
+                message.append("| User : ").append(config.getString("Language_DataBase_Tools.user")).append("\n");
+                message.append("| pass : ").append(config.getString("Language_DataBase_Tools.pass")).append("\n");
+                message.append("| Nom de la base de donné : ").append(config.getString("Language_DataBase_Tools.DataBase_Name")).append("\n");
+                message.append("| Port : ").append(config.getInt("Language_DataBase_Tools.port")).append("\n");
+            }
         }
         message.append("| \n");
-        message.append("==============================================================");
+        message.append("==============================================================\n");
 
         System.out.println(message.toString());
     }
