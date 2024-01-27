@@ -12,5 +12,6 @@ Ce plugin contient ces fonctionnalités :
 - Téléportation aléatoire
 - Home via fichier YML 
 - Configuration du plugin
+- Item Custom exemple
 
 Par Louis_292
