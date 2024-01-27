@@ -6,7 +6,7 @@ Ce plugin contient ces fonctionnalités :
 - Événement 
 - Commandes
 - Tâches répétées
-- Changement de laine de mouton aléatoirement 
+- Changement de lain aléatoire
 - Économie MySQL DataBase
 - Gestionnaire d'entités
 - Téléportation aléatoire
