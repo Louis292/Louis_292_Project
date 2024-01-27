@@ -1,9 +1,10 @@
 fr\louis\louis_292_project\Command\Home\HomeCommand.class
 fr\louis\louis_292_project\DataBase\DataBaseManager.class
+fr\louis\louis_292_project\DataBase\Economie\EconomieDbConnection.class
 fr\louis\louis_292_project\listeners\Zombie\ZombieListener.class
+fr\louis\louis_292_project\DataBase\Langue\LanguageDbCredentials.class
 fr\louis\louis_292_project\listeners\PlayerInteractListener.class
 fr\louis\louis_292_project\Command\ZombieSpawningCommand.class
-fr\louis\louis_292_project\DataBase\Economie\DbConnection.class
 fr\louis\louis_292_project\DataBase\Economie\Command\AddMonayCommand.class
 fr\louis\louis_292_project\Command\ItemCustomCommand.class
 fr\louis\louis_292_project\DataBase\Economie\Listeners\OnPlayerJoinEconomie.class
@@ -12,9 +13,11 @@ fr\louis\louis_292_project\Command\Home\DelHomeCommand.class
 fr\louis\louis_292_project\Command\TeleporteCommand.class
 fr\louis\louis_292_project\DataBase\Economie\Command\MoneyCommand.class
 fr\louis\louis_292_project\Command\Louis_292_ProjectCommand.class
+fr\louis\louis_292_project\DataBase\Economie\EconomieDbCredentials.class
 fr\louis\louis_292_project\DataBase\Economie\Command\BaltopCommand.class
 fr\louis\louis_292_project\listeners\SheepListener.class
 fr\louis\louis_292_project\Schedulers\MessageManager.class
+fr\louis\louis_292_project\DataBase\Langue\LanguageDbConnection.class
 fr\louis\louis_292_project\Schedulers\RandomTeleporte.class
+fr\louis\louis_292_project\DataBase\Langue\Listeners\OnPlayerJoinLangue.class
 fr\louis\louis_292_project\Louis_292_Project.class
-fr\louis\louis_292_project\DataBase\Economie\DbCredentials.class

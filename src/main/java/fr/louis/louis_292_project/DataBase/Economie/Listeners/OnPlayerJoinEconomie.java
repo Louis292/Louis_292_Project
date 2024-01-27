@@ -41,7 +41,7 @@ public class OnPlayerJoinEconomie implements Listener {
     }
 
     private boolean playerExists(UUID uuid) {
-        try (Connection connection = economie.getConnection();
+        try (Connection connection = economie.getEconomyConnection();
              PreparedStatement statement = connection.prepareStatement("SELECT uuid FROM player_data_money WHERE uuid = ?")) {
             statement.setString(1, uuid.toString());
             try (ResultSet resultSet = statement.executeQuery()) {
@@ -54,7 +54,7 @@ public class OnPlayerJoinEconomie implements Listener {
     }
 
     private void createPlayer(UUID uuid, String playerName) {
-        try (Connection connection = economie.getConnection();
+        try (Connection connection = economie.getEconomyConnection();
              PreparedStatement statement = connection.prepareStatement("INSERT INTO player_data_money (uuid, player_name, money, created_at) VALUES (?, ?, ?, ?)")) {
             statement.setString(1, uuid.toString());
             statement.setString(2, playerName);
@@ -67,7 +67,7 @@ public class OnPlayerJoinEconomie implements Listener {
     }
 
     private void updatePlayerName(UUID uuid, String playerName) {
-        try (Connection connection = economie.getConnection();
+        try (Connection connection = economie.getEconomyConnection();
              PreparedStatement statement = connection.prepareStatement("UPDATE player_data_money SET player_name = ?, created_at = ? WHERE uuid = ?")) {
             statement.setString(1, playerName);
             statement.setTimestamp(2, getCurrentTimestamp());
@@ -79,7 +79,7 @@ public class OnPlayerJoinEconomie implements Listener {
     }
 
     private double getPlayerMoney(UUID uuid) {
-        try (Connection connection = economie.getConnection();
+        try (Connection connection = economie.getEconomyConnection();
              PreparedStatement statement = connection.prepareStatement("SELECT money FROM player_data_money WHERE uuid = ?")) {
             statement.setString(1, uuid.toString());
             try (ResultSet resultSet = statement.executeQuery()) {

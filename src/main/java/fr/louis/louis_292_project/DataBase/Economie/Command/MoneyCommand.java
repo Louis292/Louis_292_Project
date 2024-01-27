@@ -53,7 +53,7 @@ public class MoneyCommand implements CommandExecutor {
     }
 
     private double getPlayerMoney(UUID uuid) {
-        try (Connection connection = economie.getConnection();
+        try (Connection connection = economie.getEconomyConnection();
              PreparedStatement statement = connection.prepareStatement("SELECT money FROM player_data_money WHERE uuid = ?")) {
             statement.setString(1, uuid.toString());
             try (ResultSet resultSet = statement.executeQuery()) {
@@ -73,7 +73,7 @@ public class MoneyCommand implements CommandExecutor {
             return player.getUniqueId();
         } else {
             // Si le joueur n'est pas en ligne, recherchez son UUID dans la base de données
-            try (Connection connection = economie.getConnection();
+            try (Connection connection = economie.getEconomyConnection();
                  PreparedStatement statement = connection.prepareStatement("SELECT uuid FROM player_data_money WHERE LOWER(player_name) = LOWER(?)")) {
                 statement.setString(1, playerName);
                 try (ResultSet resultSet = statement.executeQuery()) {

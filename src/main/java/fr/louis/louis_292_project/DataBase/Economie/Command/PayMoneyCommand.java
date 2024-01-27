@@ -54,7 +54,7 @@ public class PayMoneyCommand implements CommandExecutor {
             return true;
         }
 
-        try (Connection connection = dataBaseManager.getConnection()) {
+        try (Connection connection = dataBaseManager.getEconomyConnection()) {
             // Vérifier si le joueur a suffisamment d'argent
             try (PreparedStatement checkStatement = connection.prepareStatement("SELECT money FROM player_data_money WHERE player_name = ?")) {
                 checkStatement.setString(1, sender.getName());

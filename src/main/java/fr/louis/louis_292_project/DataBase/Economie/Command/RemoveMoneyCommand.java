@@ -49,7 +49,7 @@ public class RemoveMoneyCommand implements CommandExecutor {
         }
 
         // Enlever le montant de la base de données
-        try (Connection connection = dataBaseManager.getConnection();
+        try (Connection connection = dataBaseManager.getEconomyConnection();
              PreparedStatement statement = connection.prepareStatement("UPDATE player_data_money SET money = money - ?, last_update = ? WHERE player_name = ?")) {
             statement.setDouble(1, amount);
             statement.setTimestamp(2, new Timestamp(System.currentTimeMillis()));

@@ -8,6 +8,9 @@ Ce plugin contient ces fonctionnalités :
 - Tâches répétées
 - Changement de lain aléatoire
 - Économie MySQL DataBase
+- Système d'économie
+- Langue MySql DataBase
+- Système de langue
 - Gestionnaire d'entités
 - Téléportation aléatoire
 - Home via fichier YML 

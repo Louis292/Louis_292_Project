@@ -1,13 +1,13 @@
 package fr.louis.louis_292_project.DataBase.Economie;
 
-public class DbCredentials {
+public class EconomieDbCredentials {
     private String host;
     private String user;
     private String pass;
     private String dbName;
     private int port;
 
-    public DbCredentials(String host, String user, String pass, String dbName, int port) {
+    public EconomieDbCredentials(String host, String user, String pass, String dbName, int port) {
         this.host = host;
         this.user = user;
         this.pass = pass;

@@ -1,44 +1,68 @@
 package fr.louis.louis_292_project.DataBase;
 
-import fr.louis.louis_292_project.DataBase.Economie.DbConnection;
-import fr.louis.louis_292_project.DataBase.Economie.DbCredentials;
+import fr.louis.louis_292_project.DataBase.Economie.EconomieDbConnection;
+import fr.louis.louis_292_project.DataBase.Economie.EconomieDbCredentials;
+import fr.louis.louis_292_project.DataBase.Langue.LanguageDbConnection;
+import fr.louis.louis_292_project.DataBase.Langue.LanguageDbCredentials;
 import org.bukkit.configuration.file.FileConfiguration;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
 public class DataBaseManager {
-    private DbConnection economieConnection;
+    private EconomieDbConnection economyConnection;
+    private LanguageDbConnection languageConnection;
     private FileConfiguration config;
 
     public DataBaseManager(FileConfiguration config) {
         this.config = config;
-        this.connect(); // Connectez-vous à la base de données lors de l'initialisation du gestionnaire.
+        this.connect(); // Connect to databases during manager initialization.
     }
 
-    public void Close() {
-        if (economieConnection != null) {
-            economieConnection.close(); // Fermez la connexion à la base de données lors de la fermeture du gestionnaire.
+    public void close() {
+        if (economyConnection != null) {
+            economyConnection.close(); // Close economy database connection when closing the manager.
+        }
+
+        if (languageConnection != null) {
+            languageConnection.close(); // Close language database connection when closing the manager.
         }
     }
 
-    // Obtenez une connexion à la base de données
-    public Connection getConnection() throws SQLException {
-        // Si la connexion n'existe pas ou est fermée, reconnectez-vous.
-        if (economieConnection == null || economieConnection.getConnection().isClosed()) {
+    // Get a connection to the economy database
+    public Connection getEconomyConnection() throws SQLException {
+        // If the connection doesn't exist or is closed, reconnect.
+        if (economyConnection == null || economyConnection.getConnection().isClosed()) {
             connect();
         }
-        return economieConnection.getConnection();
+        return economyConnection.getConnection();
+    }
+
+    // Get a connection to the language database
+    public Connection getLanguageConnection() throws SQLException {
+        // If the connection doesn't exist or is closed, reconnect.
+        if (languageConnection == null || languageConnection.getConnection().isClosed()) {
+            connect();
+        }
+        return languageConnection.getConnection();
     }
 
     private void connect() {
         try {
-            // Vérifiez si la connexion est déjà établie pour éviter une nouvelle connexion.
-            if (economieConnection == null || economieConnection.getConnection().isClosed()) {
-                // Créez un objet DbCredentials et fournissez-le au constructeur de DbConnection.
-                DbCredentials dbCredentials = new DbCredentials(config.getString("DataBase_Tools.ip"), config.getString("DataBase_Tools.user"), config.getString("DataBase_Tools.pass"), config.getString("DataBase_Tools.DataBase_Name"), config.getInt("DataBase_Tools.port"));
-                this.economieConnection = new DbConnection(dbCredentials, config);
-                System.out.println("Successfully connected to DB.");
+            // Check if economy connection is already established to avoid reconnection.
+            if (economyConnection == null || economyConnection.getConnection().isClosed()) {
+                // Create an EconomieDbCredentials object and provide it to the EconomieDbConnection constructor.
+                EconomieDbCredentials economyCredentials = new EconomieDbCredentials(config.getString("Economie_DataBase_Tools.ip"), config.getString("Economie_DataBase_Tools.user"), config.getString("Economie_DataBase_Tools.pass"), config.getString("Economie_DataBase_Tools.DataBase_Name"), config.getInt("Economie_DataBase_Tools.port"));
+                this.economyConnection = new EconomieDbConnection(economyCredentials, config);
+                System.out.println("Successfully connected to economy DB.");
+            }
+
+            // Check if language connection is already established to avoid reconnection.
+            if (languageConnection == null || languageConnection.getConnection().isClosed()) {
+                // Create a LanguageDbCredentials object and provide it to the LanguageDbConnection constructor.
+                LanguageDbCredentials languageCredentials = new LanguageDbCredentials(config.getString("Langue_DataBase_Tools.ip"), config.getString("Langue_DataBase_Tools.user"), config.getString("Langue_DataBase_Tools.pass"), config.getString("Langue_DataBase_Tools.DataBase_Name"), config.getInt("Langue_DataBase_Tools.port"));
+                this.languageConnection = new LanguageDbConnection(languageCredentials, config);
+                System.out.println("Successfully connected to language DB.");
             }
         } catch (SQLException e) {
             e.printStackTrace();

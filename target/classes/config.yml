@@ -7,11 +7,11 @@ version: "1.0"
 # Mode debug
 debug: false
 
-# utiliser les bases de donnés
-DataBase: false
+# utiliser les bases de donné d'outils d'économie
+Economie_DataBase: false
 
-# DbCredentials
-DataBase_Tools:
+# DB Economie DbCredentials
+Economie_DataBase_Tools:
 
 # Driver utilisé
   driver: "com.mysql.jdbc.Driver"
@@ -29,4 +29,26 @@ DataBase_Tools:
   port: 3306
 
 # db ip
+  ip: "localhost"
+
+# utiliser les bases de donné d'outil de langue
+Langue_DataBase: false
+
+Language_DataBase_Tools:
+  # Driver utilisé
+  driver: "com.mysql.jdbc.Driver"
+
+  # utilisateur
+  user: "Utilisateur"
+
+  # Mots de passe
+  pass: "Passw0rd"
+
+  # Nom de la base de donné
+  DataBase_Name: "MyDB"
+
+  # port de la base de donné
+  port: 3306
+
+  # db ip
   ip: "localhost"

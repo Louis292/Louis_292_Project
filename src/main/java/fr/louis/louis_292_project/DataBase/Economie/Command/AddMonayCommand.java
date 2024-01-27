@@ -48,7 +48,7 @@ public class AddMonayCommand implements CommandExecutor {
         }
 
         // Ajouter le montant à la base de données avec mise à jour de last_update
-        try (Connection connection = dataBaseManager.getConnection();
+        try (Connection connection = dataBaseManager.getEconomyConnection();
              PreparedStatement statement = connection.prepareStatement("UPDATE player_data_money SET money = money + ?, last_update = NOW() WHERE uuid = ?")) {
             statement.setDouble(1, amount);
             statement.setString(2, target.getUniqueId().toString());

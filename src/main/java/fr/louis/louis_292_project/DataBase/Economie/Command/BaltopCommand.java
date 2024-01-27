@@ -37,7 +37,7 @@ public class BaltopCommand implements CommandExecutor {
     private String getTopPlayers() {
         StringBuilder topPlayers = new StringBuilder();
 
-        try (Connection connection = economie.getConnection();
+        try (Connection connection = economie.getEconomyConnection();
              PreparedStatement statement = connection.prepareStatement("SELECT player_name, money FROM player_data_money ORDER BY money DESC LIMIT ?")) {
             statement.setInt(1, TOP_PLAYERS_LIMIT);
             try (ResultSet resultSet = statement.executeQuery()) {

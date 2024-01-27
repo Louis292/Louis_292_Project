@@ -1,4 +1,4 @@
-package fr.louis.louis_292_project.DataBase.Economie;
+package fr.louis.louis_292_project.DataBase.Langue;
 
 import org.bukkit.configuration.file.FileConfiguration;
 
@@ -6,14 +6,14 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DbConnection {
+public class LanguageDbConnection {
 
-    private DbCredentials dbCredentials;
+    private LanguageDbCredentials languageDbCredentials;
     private Connection connection;
     private FileConfiguration config;
 
-    public DbConnection(DbCredentials dbCredentials, FileConfiguration config) {
-        this.dbCredentials = dbCredentials;
+    public LanguageDbConnection(LanguageDbCredentials languageDbCredentials, FileConfiguration config) {
+        this.languageDbCredentials = languageDbCredentials;
         this.config = config;
         this.connect();
     }
@@ -21,7 +21,7 @@ public class DbConnection {
     private void connect() {
         try {
             Class.forName(config.getString("DataBase_Tools.driver"));
-            this.connection = DriverManager.getConnection("jdbc:mysql://" + config.getString("DataBase_Tools.ip") +  ":" + config.getInt("DataBase_Tools.port") + "/" + config.getString("DataBase_Tools.DataBase_Name"), this.dbCredentials.getUser(), this.dbCredentials.getPass());
+            this.connection = DriverManager.getConnection("jdbc:mysql://" + config.getString("DataBase_Tools.ip") +  ":" + config.getInt("DataBase_Tools.port") + "/" + config.getString("DataBase_Tools.DataBase_Name"), this.languageDbCredentials.getUser(), this.languageDbCredentials.getPass());
 
             if (config.getBoolean("debug")) {
                 System.out.println("Successfully connected to DB.");
