@@ -1,7 +1,9 @@
 package fr.louis.louis_292_project.DataBase.Langue.Listeners;
 
 import fr.louis.louis_292_project.DataBase.DataBaseManager;
+import fr.louis.louis_292_project.DataBase.Langue.Langue;
 import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -15,14 +17,17 @@ import java.util.UUID;
 
 public class OnPlayerJoinLangue implements Listener {
     private final DataBaseManager dataBaseManager;
+    private final Langue langue;
     public String Default_langue = "FR_fr";
 
-    public OnPlayerJoinLangue(DataBaseManager dataBaseManager) {
+    public OnPlayerJoinLangue(DataBaseManager dataBaseManager, Langue langue) {
         this.dataBaseManager = dataBaseManager;
+        this.langue = langue;
     }
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
+        Player player = event.getPlayer();
         String playerName = event.getPlayer().getName();
         UUID playerUUID = event.getPlayer().getUniqueId();
 
@@ -52,17 +57,12 @@ public class OnPlayerJoinLangue implements Listener {
                 }
             }
 
-            // Send a welcome message based on the player's language
-            switch (playerLangue) {
-                case "FR_fr":
-                    event.getPlayer().sendMessage(ChatColor.GREEN + "Bienvenue sur le serveur !");
-                    break;
-                case "EN_uk":
-                    event.getPlayer().sendMessage(ChatColor.GREEN + "Welcome to the server!");
-                    break;
-                default:
-                    event.getPlayer().sendMessage(ChatColor.GREEN + "Welcome to the server!");
-                    break;
+            // Ensure that 'langue' is not null before using it
+            if (langue != null) {
+                player.sendMessage(langue.StringLanguePlayer(player, ChatColor.GREEN + "Bienvenue sur le serveur !", ChatColor.GREEN + "Welcome to the server!"));
+            } else {
+                // Handle the case where 'langue' is null
+                player.sendMessage(ChatColor.RED + "Erreur: Langue non initialisée.");
             }
 
         } catch (SQLException e) {

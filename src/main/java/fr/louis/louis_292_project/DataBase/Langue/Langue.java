@@ -3,10 +3,7 @@ package fr.louis.louis_292_project.DataBase.Langue;
 import fr.louis.louis_292_project.DataBase.DataBaseManager;
 import org.bukkit.entity.Player;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.UUID;
 
 public class Langue {
@@ -42,10 +39,11 @@ public class Langue {
 
     public void setPlayerLangue(UUID playerUUID, String langue) {
         try (Connection connection = dataBaseManager.getLanguageConnection();
-             PreparedStatement statement = connection.prepareStatement("UPDATE player_data_langue SET langue = ? WHERE uuid = ?")) {
+             PreparedStatement statement = connection.prepareStatement("UPDATE player_data_langue SET langue = ?, last_update = ? WHERE uuid = ?")) {
 
             statement.setString(1, langue);
-            statement.setString(2, playerUUID.toString());
+            statement.setTimestamp(2, new Timestamp(System.currentTimeMillis()));
+            statement.setString(3, playerUUID.toString());
 
             statement.executeUpdate();
         } catch (SQLException e) {

@@ -6,9 +6,12 @@ fr\louis\louis_292_project\DataBase\Langue\LanguageDbCredentials.class
 fr\louis\louis_292_project\listeners\PlayerInteractListener.class
 fr\louis\louis_292_project\Command\ZombieSpawningCommand.class
 fr\louis\louis_292_project\DataBase\Langue\Listeners\LangueGuiInteract.class
+fr\louis\louis_292_project\DataBase\Economie\Economie.class
 fr\louis\louis_292_project\DataBase\Economie\Command\AddMonayCommand.class
 fr\louis\louis_292_project\Command\ItemCustomCommand.class
+fr\louis\louis_292_project\listeners\OnPlayerJoinAddScoreBoard$1.class
 fr\louis\louis_292_project\DataBase\Economie\Listeners\OnPlayerJoinEconomie.class
+fr\louis\louis_292_project\listeners\OnPlayerJoinAddScoreBoard.class
 fr\louis\louis_292_project\Command\Home\SetHomeCommand.class
 fr\louis\louis_292_project\Command\Home\DelHomeCommand.class
 fr\louis\louis_292_project\Command\TeleporteCommand.class

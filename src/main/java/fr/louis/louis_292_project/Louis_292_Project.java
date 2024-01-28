@@ -9,11 +9,14 @@ import fr.louis.louis_292_project.Command.TeleporteCommand;
 import fr.louis.louis_292_project.Command.ZombieSpawningCommand;
 import fr.louis.louis_292_project.DataBase.DataBaseManager;
 import fr.louis.louis_292_project.DataBase.Economie.Command.*;
+import fr.louis.louis_292_project.DataBase.Economie.Economie;
 import fr.louis.louis_292_project.DataBase.Economie.Listeners.OnPlayerJoinEconomie;
 import fr.louis.louis_292_project.DataBase.Langue.Command.LangueCommand;
+import fr.louis.louis_292_project.DataBase.Langue.Langue;
 import fr.louis.louis_292_project.DataBase.Langue.Listeners.LangueGuiInteract;
 import fr.louis.louis_292_project.DataBase.Langue.Listeners.OnPlayerJoinLangue;
 import fr.louis.louis_292_project.Schedulers.MessageManager;
+import fr.louis.louis_292_project.listeners.OnPlayerJoinAddScoreBoard;
 import fr.louis.louis_292_project.listeners.PlayerInteractListener;
 import fr.louis.louis_292_project.listeners.SheepListener;
 import fr.louis.louis_292_project.listeners.Zombie.ZombieListener;
@@ -25,6 +28,8 @@ public final class Louis_292_Project extends JavaPlugin {
 
     private static FileConfiguration config;
     private DataBaseManager dataBaseManager;
+    private Langue langue;
+    private Economie economie;
 
 
     @Override
@@ -47,10 +52,12 @@ public final class Louis_292_Project extends JavaPlugin {
             getCommand("pay").setExecutor(new PayMoneyCommand(dataBaseManager));
         }
         if (config.getBoolean("Langue_DataBase")) {
-            Bukkit.getPluginManager().registerEvents(new OnPlayerJoinLangue(dataBaseManager), this);
+            Bukkit.getPluginManager().registerEvents(new OnPlayerJoinLangue(dataBaseManager, langue), this);
             Bukkit.getPluginManager().registerEvents(new LangueGuiInteract(dataBaseManager), this);
             getCommand("langue").setExecutor(new LangueCommand(dataBaseManager, config));
         }
+
+        Bukkit.getPluginManager().registerEvents(new OnPlayerJoinAddScoreBoard(langue, economie, dataBaseManager, this), this);
 
         Bukkit.getPluginManager().registerEvents(new SheepListener(), this);
         Bukkit.getPluginManager().registerEvents(new ZombieListener(), this);
