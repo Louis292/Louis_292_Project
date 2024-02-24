@@ -17,4 +17,6 @@ Ce plugin contient ces fonctionnalités :
 - Configuration du plugin
 - Item Custom exemple
 
-Par Louis_292
+Ce plugin et un plugin qui a comme objectif de relié plusieurs fonctionnalités en un plugin, si vous voulez une fonctionnalité il vous suffira de la prendre dans mon code, si vous souhaitez en ajouter davantage contacter moi sur discord : Louis_292.
+
+Amusé vous bien !
